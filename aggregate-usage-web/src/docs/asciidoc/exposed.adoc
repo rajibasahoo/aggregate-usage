@@ -1,0 +1,10 @@
+== Exposed through
+
+Our service is available through the following endpoints:
+
+[cols="1,6", options="header"]
+|===
+|HTTP Code | Description
+|UAT       |
+|PRD       |
+|===

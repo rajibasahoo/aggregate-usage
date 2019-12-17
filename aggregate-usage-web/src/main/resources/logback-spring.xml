@@ -1,0 +1,55 @@
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+  <springProfile name="!local">
+    <!-- Logstash-Configuration -->
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+      <destination>${LOGSTASH_URL}</destination>
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        <customFields>{"application-name":"${APPDYNAMICS_AGENT_APPLICATION_NAME}", "it-domain": "FEZ", "team": "FEZ Elon"}</customFields>
+      </encoder>
+      <includeCallerData>true</includeCallerData>
+      <keepAliveDuration>10 second</keepAliveDuration>
+      <reconnectionDelay>1 second</reconnectionDelay>
+      <!-- Enable SSL using the JVM's default keystore/truststore -->
+      <ssl/>
+    </appender>
+  </springProfile>
+
+  <springProfile name="prd">
+    <!-- Logstash-Configuration -->
+    <logger name="nl.tele2" level="INFO" additivity="false">
+      <appender-ref ref="logstash"/>
+    </logger>
+    <root level="INFO" additivity="false">
+      <appender-ref ref="logstash"/>
+    </root>
+    <logger name="com.hazelcast" level="INFO" additivity="false">
+      <appender-ref ref="logstash"/>
+    </logger>
+  </springProfile>
+
+  <springProfile name="dev,tst,int,uat,prf">
+    <!-- Logstash-Configuration -->
+    <logger name="nl.tele2" level="INFO" additivity="false">
+      <appender-ref ref="logstash"/>
+    </logger>
+    <root level="Info" additivity="false">
+      <appender-ref ref="logstash"/>
+    </root>
+    <logger name="com.hazelcast" level="INFO" additivity="false">
+      <appender-ref ref="logstash"/>
+    </logger>
+  </springProfile>
+
+  <springProfile name="local">
+    <root level="INFO" additivity="false">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+    <logger name="nl.tele2" level="INFO" additivity="false">
+      <appender-ref ref="CONSOLE"/>
+    </logger>
+  </springProfile>
+
+</configuration>

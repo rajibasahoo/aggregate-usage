@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/rest/Customer/rowBalance",
+    "queryParameters" : {
+      "MSISDN" : {
+        "equalTo" : "0600000000"
+      },
+      "sender" : {
+        "equalTo" : "FEZ_NL"
+      },
+      "legalEntity" : {
+        "equalTo" : "27"
+      },
+      "BusinessProcessId" : {
+        "matches" : "^(.*)$"
+      },
+      "ConversationId" : {
+        "matches" : "^(.*)$"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "restOfWorldWithTopups.xml",
+    "headers": {
+      "Content-Type": "application/xml"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "MSISDNList": [
+    "31612345678"
+  ],
+  "inactiveMSISDNList": [
+    "31612345679"
+  ],
+  "suspendedMSISDNList": [
+    "31612345670"
+  ]
+}

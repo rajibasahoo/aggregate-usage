@@ -1,0 +1,13 @@
+*.log
+*/logs
+**/.project
+**/.settings
+**/.classpath
+**/target/
+**/.springBeans
+*.jar
+!libs/**/*.jar
+**.iml
+**.idea
+**/*.versionsBackup
+**/*.releaseBackup

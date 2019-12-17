@@ -1,0 +1,6 @@
+.git
+src
+logs
+target
+!target/*.jar
+!target/classes/appdynamics

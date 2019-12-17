@@ -1,0 +1,25 @@
+== Errors
+
+[cols="1,6", options="header"]
+|===
+|HTTP Code | Description
+|400       | is returned when the request is not correctly formatted or when request parameters are missing.
+|500       | is returned when this service encounters an unexpected error.
+|502       | is returned when a service consumed by the Aggregate Usage service returns an invalid response or is unavailable.
+|===
+
+Below is show one example of error response.
+
+[source, json]
+----
+{
+  "code": "AggregateUsage API-453",
+  "developerMessage": "Check the request to see if it follows the contract of the service.aggregate-usageaggregateusage-api#aggregateusage-api-453",
+  "errors": [
+    {
+      "value": "Missing request header 'ConversationId' for method parameter of type String",
+      "description": "The request is not formed correctly.; Original error code: [AggregateUsage API-453]; "
+    }
+  ]
+}
+----

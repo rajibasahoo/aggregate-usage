@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: aggregate-usage
+  cloud:
+    config:
+      token: fake_token
+
+---
+
+spring:
+  profiles:
+    local
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+users:
+  testuser: $2a$10$9c.Ab.aqo6MQhqz7UlU.ieEhBPKx9Lt.w.e5otBMs2u.vDvYEaDXO
+
+---
+
+spring:
+  profiles:
+    dev
+  cloud:
+    config:
+      uri: http://configuration-service.dev.dle.nl.corp.tele2.com
+
+---
+
+spring:
+  profiles:
+    tst
+  cloud:
+    config:
+      enabled: false
+
+users:
+  testuser: $2a$10$9c.Ab.aqo6MQhqz7UlU.ieEhBPKx9Lt.w.e5otBMs2u.vDvYEaDXO
+
+---
+
+spring:
+  profiles:
+    int
+  cloud:
+    config:
+      uri: http://configuration-service.int.dle.nl.corp.tele2.com
+
+---
+
+spring:
+  profiles:
+    uat
+  cloud:
+    config:
+      uri: http://configuration-service.uat.dle.nl.corp.tele2.com
+
+---
+
+spring:
+  profiles:
+    prf
+  cloud:
+    config:
+      uri: http://configuration-service.prf.dle.nl.corp.tele2.com
+
+---
+
+spring:
+  profiles:
+    prd
+  cloud:
+    config:
+      uri: http://configuration-service.ple.nl.corp.tele2.com

@@ -1,0 +1,18 @@
+== Services Consumed by Aggregate Usage
+
+[cols="1,2,5", options="header"]
+|===
+|Environment | URL | Description
+|TST       | http://tst.tip.corp.tele2.com:3405/rest/Customer/nationalBalance | Endpoint to fetch the EU usage of the customer
+|DEV       | http://sat.tip.corp.tele2.com:3405/rest/Customer/nationalBalance | Endpoint to fetch the EU usage of the customer
+|INT       | http://sit.tip.corp.tele2.com:3405/rest/Customer/nationalBalance | Endpoint to fetch the EU usage of the customer
+|UAT       | http://preprd.tip.corp.tele2.com:3605/rest/Customer/nationalBalance | Endpoint to fetch the EU usage of the customer
+|PRF       | http://perf.tip.corp.tele2.com:5505/rest/Customer/nationalBalance | Endpoint to fetch the EU usage of the customer
+|PRD       | http://prd.tip.corp.tele2.com:5505/rest/Customer/nationalBalance | Endpoint to fetch the EU usage of the customer
+|TST       | http://tst.tip.corp.tele2.com:3405/rest/Customer/rowBalance | Endpoint to fetch the Rest Of the World (out-side EU) usage of the customer
+|DEV       | http://sat.tip.corp.tele2.com:3405/rest/Customer/rowBalance | Endpoint to fetch the Rest Of the World (out-side EU) usage of the customer
+|INT       | http://sit.tip.corp.tele2.com:3405/rest/Customer/rowBalance | Endpoint to fetch the Rest Of the World (out-side EU) usage of the customer
+|UAT       | http://preprd.tip.corp.tele2.com:3605/rest/Customer/rowBalance | Endpoint to fetch the Rest Of the World (out-side EU) usage of the customer
+|PRF       | http://perf.tip.corp.tele2.com:5505/rest/Customer/rowBalance | Endpoint to fetch the Rest Of the World (out-side EU) usage of the customer
+|PRD       | http://prd.tip.corp.tele2.com:5505/rest/Customer/rowBalance | Endpoint to fetch the Rest Of the World (out-side EU) usage of the customer
+|===

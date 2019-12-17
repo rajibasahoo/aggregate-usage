@@ -1,0 +1,20 @@
+{
+  "at_hash": "Gz7-G6PGJNawBonfC1olig",
+  "sub": "as@as.as@consumer.tele2.nl",
+  "role": "SLG",
+  "iss": "https://nlus-wso2is21.corp.tele2.com:9543/oauth2/token",
+  "active": "1",
+  "siebel_id": "10312274560",
+  "cbs_id": "1234",
+  "britebill_id": "10312274561",
+  "acr": "urn:mace:incommon:iap:silver",
+  "uid": "4936",
+  "aud": [
+    "6GxGOfGgY8zlqkH98EwYKH6iA78a"
+  ],
+  "customerType": "4G/LTE",
+  "azp": "6GxGOfGgY8zlqkH98EwYKH6iA78a",
+  "exp": 1831301056,
+  "iat": 1531297456,
+  "nonce": "12345"
+}

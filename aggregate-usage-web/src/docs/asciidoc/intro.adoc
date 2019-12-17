@@ -1,0 +1,34 @@
+= Aggregate Usage
+
+This service exposes information about the usage for a given msisdn.
+To determine the usage this service consumes two other systems; OCS and Policy Zone (PZ).
+
+The endpoint that connects to OCS is called the national balance
+The endpoint that connects to PZ is called the rest of world balance
+
+National balance includes all Netherlands and EU bundles. Rest of World contains all the topups.
+
+Some of the responses from either OCS or PZ will not contain the data in Megabytes.
+We will convert those from whatever unit to Megabytes so that our API is always consistent.
+
+== OCS
+- the system responds with the following message if the given msisdn is not known in the system:
+
+=== Unlimited for a day
+The unlimited for a day bundle is a special kind of bundle with type: `DATA_UNLIMITED`. The actual limit of this bundle is 2.5TB but we will show the usage as 0.
+We do this so the total aggregated amount stays the same. The front-ends can show a different type of tile based on the type of this bundle.
+With the 24H_UL bundle there's also a FUP. This FUP will be aggregated with any existing FUP.
+
+[source, xml]
+----
+<?xml version="1.0"?>
+<response>
+  <GetBalance_Output>
+    <Body SVType="Hashmap">
+      <ERROR_MESSAGE>&lt;E201003&gt; Service with service name 31699982864 does not exist</ERROR_MESSAGE>
+      <TRUE_FALSE SVType="Long">0</TRUE_FALSE>
+      <ERROR_CODE SVType="Long">201003</ERROR_CODE>
+    </Body>
+  </GetBalance_Output>
+</response>
+----

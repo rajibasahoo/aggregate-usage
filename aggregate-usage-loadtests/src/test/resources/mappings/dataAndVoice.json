@@ -1,0 +1,39 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/rest/Customer/nationalBalance",
+    "queryParameters" : {
+      "MSISDN" : {
+        "equalTo" : "0600000000"
+      },
+      "sender" : {
+        "equalTo" : "FEZ_NL"
+      },
+      "legalEntity" : {
+        "equalTo" : "27"
+      },
+      "BusinessProcessId" : {
+        "matches" : "^(.*)$"
+      },
+      "ConversationId" : {
+        "matches" : "^(.*)$"
+      },
+      "LimitsFlag" : {
+        "equalTo" : "All"
+      },
+      "InvoiceLanguage" : {
+        "equalTo" : "English"
+      },
+      "AllocationsFlag" : {
+        "equalTo" : "All"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "nationalDataAndVoice.xml",
+    "headers": {
+      "Content-Type": "application/xml"
+    }
+  }
+}

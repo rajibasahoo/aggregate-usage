@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            jaxb:version="2.1">
+    <xsd:complexType name="NationalBalanceResponse">
+        <xsd:sequence>
+            <xsd:element name="GetBalance_Output" nillable="false" type="GetBalance_Output"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetBalance_Output">
+        <xsd:sequence>
+            <xsd:element name="Body" nillable="false" type="Body"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Body">
+        <xsd:sequence>
+            <xsd:element name="ACCOUNT_BALANCE" nillable="false" type="account_balance"/>
+            <xsd:element name="TRUE_FALSE">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jaxb:property name="trueFalse"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ERROR_CODE" minOccurs="0" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jaxb:property name="errorCode"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ERROR_MESSAGE" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jaxb:property name="errorMessage"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="account_balance">
+        <xsd:sequence>
+            <xsd:sequence>
+                <xsd:element name="BALANCE" minOccurs="0" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="balance"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="UNBILLED_AMOUNT" minOccurs="0" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="unbilledAmount"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="TOTAL_BALANCE" minOccurs="0" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="totalBalance"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="CURRENCY" type="xsd:string" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="currency"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="BILLING_PERIOD_START_DATE" nillable="false" minOccurs="0"
+                             type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="billingPeriodStartDate"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="BILLING_PERIOD_END_DATE" nillable="false" minOccurs="0"
+                             type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="billingPeriodEndDate"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="BUCKET_ALLOCATIONS" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="bucketAllocations"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:appinfo>
+                                <jaxb:class name="BucketAllocations"/>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="Item" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="BUCKET_CATEGORY" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketCategory"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_ENTITLEMENT_ID" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketEntitlementId"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="PARENT_CRM_REF" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="parentCrmRef"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="RECURRENCE_AMOUNT" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="recurrenceAmount"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_AMOUNT" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketAmount"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="RESERVATION_AMOUNT" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="reservationAmount"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="TOTAL_REMAINING_AMOUNT" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="totalRemainingAmount"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_LEVEL" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketLevel"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="ALLOCATION_START_DATE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="allocationStartDate"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="ALLOCATION_END_DATE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="allocationEndDate"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="UNIT_OF_MEASURE" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="unitOfMeasure"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="AMOUNT_REMAINING" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="amountRemaining"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SERVICE_NAME" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceName"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SERVICE_TYPE" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="ACCOUNT_NUMBER" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="accountNumber"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="CRM_REF" type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="crmRef"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="PRODUCT_NAME" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="productName"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_TYPE" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_REPEAT_TYPE" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketRepeatType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_UNIT_TYPE" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketUnitType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BUCKET_INVOICE_TEXT" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="bucketInvoiceText"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="THRESHOLD_TYPE" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="tresholdType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="THRESHOLD_VALUE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="tresholdValue"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="LAST_USED_DATE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="lastUsedData"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="DEPARTMENT" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="department"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="CLASSIFICATION" nillable="false"
+                                                     type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="classification"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="STATUS" type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="status"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="SERVICE_BALANCE" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="serviceBalance"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:appinfo>
+                                <jaxb:class name="serviceBalance"/>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="Item" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="SERVICE_NAME" type="xsd:string" minOccurs="0"/>
+                                        <xsd:element name="SERVICE_TYPE" type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="CONTACT_MOBILE_NUMBER" type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="contactMobileNumber"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SERVICE_BALANCE" minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceBalance"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SERVICE_BALANCE_RESERVATION"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceBalanceReservation"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SPENDING_BALANCE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="spendingBalance"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SPENDING_BALANCE_RESERVATION"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="spendingBalanceReservation"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="RECURRING_BALANCE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="recurringBalance"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SPENDING_LIMIT" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="spendingLimit"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SPENDING_BALANCE_EXCL_VAT" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="spendingLimitExclVat"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BILLING_PERIOD_START_DATE"
+                                                     nillable="false" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="billingPeriodStartDate"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BILLING_PERIOD_END_DATE" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="ACCOUNT_NUMBER" type="xsd:string" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="accountNumber"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="CUSTOMER_TYPE" type="xsd:string" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="customerType"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="USAGE_LIMITS" minOccurs="0">
+                    <xsd:annotation>
+                        <xsd:appinfo>
+                            <jaxb:property name="usageLimits"/>
+                        </xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:appinfo>
+                                <jaxb:class name="UsageLimits"/>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="Item" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="PARENT_ACCOUNT_NUMBER" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="parentAccountNumber"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="ACCOUNT_NUMBER" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="accountNumber"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SERVICE_NAME" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceName"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="COUNTER_NAME" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="counterName"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="THRESHOLD_VALUE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="tresholdValue"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="CURRENT_BALANCE" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="currentBalance"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="COUNTER_KEY" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="counterKey"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="OFFSET" minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="offset"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="INVOICE_TEXT" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="invoiceText"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="CRM_REF" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="crmRef"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SUBSCRIPTION_CRM_REF" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="subscriptionCrmRef"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="PRODUCT_NAME" nillable="false"
+                                                     type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="productName"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="COUNTER_START_DATE" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="counterStartDate"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="COUNTER_END_DATE" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="counterEndDate"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="LAST_USED_DATE" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="lastUsedDate"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="DISPLAY_NAME" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="displayName"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="CLASSIFICATION" nillable="false"
+                                                     type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="classification"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="UNIT_OF_MEASURE" nillable="false"
+                                                     type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="unitOfMeasure"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="LEVEL" nillable="false" type="xsd:string"
+                                                     minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="level"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="REPEAT_TYPE" nillable="false"
+                                                     type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="repeatType"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BALANCE_LEFT" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="balanceLeft"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="BALANCE_RESET" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="BalanceReset"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SERVICE_STATUS" nillable="false"
+                                                     type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="serviceStatus"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="HARD_OFFSET" nillable="false"
+                                                     minOccurs="0" type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="hardOffset"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="SOFT_OFFSET" nillable="false" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="softOffset"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="STATUS" nillable="false" type="xsd:string" minOccurs="0">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="status"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="RESERVED_BALANCE" nillable="false" minOccurs="0"
+                                                     type="xsd:string">
+                                            <xsd:annotation>
+                                                <xsd:appinfo>
+                                                    <jaxb:property name="reservedBalance"/>
+                                                </xsd:appinfo>
+                                            </xsd:annotation>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

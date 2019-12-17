@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<response>
+    <GetBalance_Output>
+        <Body SVType="Hashmap">
+            <ACCOUNT_BALANCE SVType='Hashmap'>
+                <CURRENCY>EUR</CURRENCY>
+                <TOTAL_BALANCE SVType='Double'>0</TOTAL_BALANCE>
+                <SERVICE_BALANCE SVType='List of Hashmap'>
+                    <Item SVType='Hashmap'>
+                        <SERVICE_NAME>31699983293</SERVICE_NAME>
+                        <SERVICE_TYPE>Mobile</SERVICE_TYPE>
+                    </Item>
+                </SERVICE_BALANCE>
+                <UNBILLED_AMOUNT SVType='Double'>0</UNBILLED_AMOUNT>
+                <BILLING_PERIOD_END_DATE SVType='DateAndTime'>2018-08-31 23:59:59.000+0200</BILLING_PERIOD_END_DATE>
+                <USAGE_LIMITS SVType='List of Hashmap'>
+                    <Item SVType='Hashmap'>
+                        <THRESHOLD_VALUE SVType='Double'>100</THRESHOLD_VALUE>
+                        <COUNTER_NAME>all_usage_cons</COUNTER_NAME>
+                        <INVOICE_TEXT>Factuur Limiet</INVOICE_TEXT>
+                        <CLASSIFICATION>CON_USAGE_LIMIT</CLASSIFICATION>
+                        <CRM_REF>1-1AIF74S</CRM_REF>
+                        <LAST_USED_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</LAST_USED_DATE>
+                        <LEVEL>Customer Node</LEVEL>
+                        <PARENT_ACCOUNT_NUMBER>70000032088</PARENT_ACCOUNT_NUMBER>
+                        <PRODUCT_NAME>USAGE_LIMIT</PRODUCT_NAME>
+                        <UNIT_OF_MEASURE>Cash</UNIT_OF_MEASURE>
+                        <COUNTER_KEY>2700030|20001065|958263</COUNTER_KEY>
+                        <COUNTER_START_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</COUNTER_START_DATE>
+                        <REPEAT_TYPE>Bill Cycle</REPEAT_TYPE>
+                        <COUNTER_END_DATE SVType='DateAndTime'>2018-08-31 23:59:59.000+0200</COUNTER_END_DATE>
+                        <OFFSET SVType='Double'>0</OFFSET>
+                        <CURRENT_BALANCE SVType='Double'>30.50</CURRENT_BALANCE>
+                        <ACCOUNT_NUMBER>1-1AIF74S</ACCOUNT_NUMBER>
+                    </Item>
+                    <Item SVType='Hashmap'>
+                        <THRESHOLD_VALUE SVType='Double'>50</THRESHOLD_VALUE>
+                        <COUNTER_NAME>Spending_Limit_RLAH</COUNTER_NAME>
+                        <HARD_OFFSET SVType='Double'>0</HARD_OFFSET>
+                        <PARENT_ACCOUNT_NUMBER>70000032088</PARENT_ACCOUNT_NUMBER>
+                        <SERVICE_STATUS>ACTIVE</SERVICE_STATUS>
+                        <COUNTER_KEY>2700036|50000483|958272</COUNTER_KEY>
+                        <REPEAT_TYPE>Bill Cycle</REPEAT_TYPE>
+                        <OFFSET SVType='Double'>0</OFFSET>
+                        <CURRENT_BALANCE SVType='Double'>0</CURRENT_BALANCE>
+                        <ACCOUNT_NUMBER>1-1AIF74S</ACCOUNT_NUMBER>
+                        <SUBSCRIPTION_CRM_REF>1-1AIF74V</SUBSCRIPTION_CRM_REF>
+                        <SERVICE_NAME>31699983293</SERVICE_NAME>
+                        <INVOICE_TEXT>Roaming Limiet</INVOICE_TEXT>
+                        <BALANCE_RESET SVType='Double'>0</BALANCE_RESET>
+                        <CLASSIFICATION>ROW_BSP</CLASSIFICATION>
+                        <CRM_REF>1-SD2_NL-433c61bea63d4583941f269af1fcf99a</CRM_REF>
+                        <LAST_USED_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</LAST_USED_DATE>
+                        <LEVEL>Service</LEVEL>
+                        <SOFT_OFFSET SVType='Double'>0</SOFT_OFFSET>
+                        <PRODUCT_NAME>BILLSHOCK_RLAH</PRODUCT_NAME>
+                        <UNIT_OF_MEASURE>Cash</UNIT_OF_MEASURE>
+                        <COUNTER_START_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</COUNTER_START_DATE>
+                        <BALANCE_LEFT SVType='Double'>50</BALANCE_LEFT>
+                        <COUNTER_END_DATE SVType='DateAndTime'>2018-08-31 23:59:59.000+0200</COUNTER_END_DATE>
+                    </Item>
+                </USAGE_LIMITS>
+                <BILLING_PERIOD_START_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</BILLING_PERIOD_START_DATE>
+                <BUCKET_ALLOCATIONS SVType='List of Hashmap'>
+                    <Item SVType='Hashmap'>
+                        <BUCKET_INVOICE_TEXT>Bel/SMS</BUCKET_INVOICE_TEXT>
+                        <BUCKET_CATEGORY>VMRC_R2</BUCKET_CATEGORY>
+                        <RESERVATION_AMOUNT SVType='Double'>0</RESERVATION_AMOUNT>
+                        <BUCKET_LEVEL>Account</BUCKET_LEVEL>
+                        <BUCKET_UNIT_TYPE>Unit Bucket</BUCKET_UNIT_TYPE>
+                        <TOTAL_REMAINING_AMOUNT SVType='Double'>100</TOTAL_REMAINING_AMOUNT>
+                        <CLASSIFICATION>VOICE_SMS</CLASSIFICATION>
+                        <CRM_REF>1-1AIF74U</CRM_REF>
+                        <LAST_USED_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</LAST_USED_DATE>
+                        <ALLOCATION_END_DATE SVType='DateAndTime'>2018-08-31 23:59:59.000+0200</ALLOCATION_END_DATE>
+                        <ALLOCATION_START_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</ALLOCATION_START_DATE>
+                        <PRODUCT_NAME>VMRC_R2</PRODUCT_NAME>
+                        <UNIT_OF_MEASURE>Minutes</UNIT_OF_MEASURE>
+                        <BUCKET_ENTITLEMENT_ID>958270</BUCKET_ENTITLEMENT_ID>
+                        <BUCKET_REPEAT_TYPE>Bill Cycle Month</BUCKET_REPEAT_TYPE>
+                        <STATUS>Active</STATUS>
+                        <AMOUNT_REMAINING SVType='Double'>90</AMOUNT_REMAINING>
+                        <BUCKET_AMOUNT SVType='Double'>100</BUCKET_AMOUNT>
+                        <ACCOUNT_NUMBER>1-1AIF74S</ACCOUNT_NUMBER>
+                    </Item>
+                    <Item SVType='Hashmap'>
+                        <BUCKET_ENTITLEMENT_ID>I_21765</BUCKET_ENTITLEMENT_ID>
+                        <BUCKET_INVOICE_TEXT>Data</BUCKET_INVOICE_TEXT>
+                        <BUCKET_CATEGORY>DMRB_R1</BUCKET_CATEGORY>
+                        <RESERVATION_AMOUNT SVType='Double'>0</RESERVATION_AMOUNT>
+                        <BUCKET_LEVEL>Account</BUCKET_LEVEL>
+                        <BUCKET_UNIT_TYPE>Unit Bucket</BUCKET_UNIT_TYPE>
+                        <TOTAL_REMAINING_AMOUNT SVType='Double'>999</TOTAL_REMAINING_AMOUNT>
+                        <CLASSIFICATION>DATA|PR</CLASSIFICATION>
+                        <CRM_REF>1-1AIF74T</CRM_REF>
+                        <LAST_USED_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</LAST_USED_DATE>
+                        <ALLOCATION_END_DATE SVType='DateAndTime'>2018-08-31 23:59:59.000+0200</ALLOCATION_END_DATE>
+                        <ALLOCATION_START_DATE SVType='DateAndTime'>2018-08-01 00:00:00.000+0200</ALLOCATION_START_DATE>
+                        <PRODUCT_NAME>DMRB_R1</PRODUCT_NAME>
+                        <UNIT_OF_MEASURE>Megabytes</UNIT_OF_MEASURE>
+                        <BUCKET_ENTITLEMENT_ID>958268</BUCKET_ENTITLEMENT_ID>
+                        <BUCKET_REPEAT_TYPE>Bill Cycle Month</BUCKET_REPEAT_TYPE>
+                        <STATUS>Active</STATUS>
+                        <AMOUNT_REMAINING SVType='Double'>666</AMOUNT_REMAINING>
+                        <BUCKET_AMOUNT SVType='Double'>10000</BUCKET_AMOUNT>
+                        <ACCOUNT_NUMBER>1-1AIF74S</ACCOUNT_NUMBER>
+                        <PARENT_CRM_REF>DMRB_R120190103144136</PARENT_CRM_REF>
+                        <RECURRENCE_AMOUNT>100</RECURRENCE_AMOUNT>
+                    </Item>
+                </BUCKET_ALLOCATIONS>
+                <ACCOUNT_NUMBER>1-1AIF74S</ACCOUNT_NUMBER>
+                <BALANCE SVType='Double'>0</BALANCE>
+            </ACCOUNT_BALANCE>
+            <TRUE_FALSE SVType='Long'>1</TRUE_FALSE>
+        </Body>
+    </GetBalance_Output>
+</response>

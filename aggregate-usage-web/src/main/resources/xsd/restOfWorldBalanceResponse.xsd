@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dataroamingbucket.tele2.net/dataroamingbucket/wsdl/v1/">
+  <xsd:complexType name="RestOfWorldBalanceResponse">
+    <xsd:sequence>
+      <xsd:element name="GetAllBucketsResponse" nillable="false" type="GetAllBucketsResponse"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetAllBucketsResponse">
+    <xsd:sequence>
+      <xsd:element name="code" type="xsd:int"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="accountID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="msisdn" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="buckets" type="docTypeRef_tns_Bucket" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="billCycleStartDate" type="xsd:dateTime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="docTypeRef_tns_Bucket">
+    <xsd:sequence>
+      <xsd:element name="bucketID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="sharedBucketID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="bucketState" type="bucketStateEnum" minOccurs="0"/>
+      <xsd:element name="product" type="docTypeRef_tns_Product" minOccurs="0"/>
+      <xsd:element name="quarantineFlag" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="expiredNotification" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="usedNotification" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="creationDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="finalStateDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="startDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="endDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="committedVolume" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="volumeConsumedDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="chargeTraffic" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="blockFlag" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="finalRedirectFlag" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="fairUsageBuckets" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="legalEntity" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="billingSystem" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="billingMsisdn" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="billingImsi" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="notificationRecipient" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="notificationType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="accountID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="quarantineEndDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="externalReferenceID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="externalProductName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="externalCategory" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="notificationSuffix" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="volumeHistory" type="xsd:long" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="docTypeRef_tns_Product">
+    <xsd:sequence>
+      <xsd:element name="productID" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="legalEntity" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="expirationTime" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="quarantineTime" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="productType" type="productTypeEnum" minOccurs="0"/>
+      <xsd:element name="priority" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="capacity" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="capacityUnit" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="location" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="autoJoin" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="defaultFUP" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="activationNotification" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="durationNotification" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="chargeTraffic" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="enforcementName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="enforcementLevel" type="xsd:double" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="resetPeriodName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="continueCounting" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="duration" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="durationUnit" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="validityStartDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="validityStopDate" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="thresholdLevel" type="xsd:double" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="thresholdMessage" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="resetType" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="resetInterval" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="resetIntervalUnit" type="xsd:int" minOccurs="0"/>
+      <xsd:element name="activityPeriodName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="bucketStateEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:whiteSpace value="preserve"/>
+      <xsd:enumeration value="provisioned"/>
+      <xsd:enumeration value="active"/>
+      <xsd:enumeration value="used"/>
+      <xsd:enumeration value="cancelled"/>
+      <xsd:enumeration value="expired"/>
+      <xsd:enumeration value="all"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="productTypeEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:whiteSpace value="preserve"/>
+      <xsd:enumeration value="base"/>
+      <xsd:enumeration value="shared"/>
+      <xsd:enumeration value="add-on"/>
+      <xsd:enumeration value="fairusage"/>
+      <xsd:enumeration value="all"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

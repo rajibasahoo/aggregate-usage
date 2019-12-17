@@ -1,0 +1,309 @@
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+    time-zone: "Europe/Amsterdam"
+  multirabbitmq:
+    cloudBusRabbit:
+      defaultConnection: true
+
+server:
+  tomcat.max-threads: 30
+
+api:
+  name: AggregateUsage API
+  docBase: aggregate-usage
+
+graceful:
+  shutdown:
+    enabled: true
+    wait: 0
+    timeout: 30
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include:
+        - env
+        - health
+        - info
+        - prometheus
+  metrics:
+    use-global-registry: false
+    web:
+      server:
+        auto-time-requests: false
+    distribution:
+      sla:
+        "[rest.endpoint]": 200ms, 1s
+      percentiles-histogram:
+        "[http.client.requests]": true
+  health:
+    status:
+      order: UNSTABLE, UP
+    diskspace:
+      enabled: false
+  security:
+    enabled: false
+
+hystrix:
+  wrappers:
+    enabled: false
+  timeoutInSeconds: 15
+  threadpool:
+    default:
+      coreSize: 15
+      maximumSize: 30
+      allowMaximumSizeToDivergeFromCoreSize: "true"
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 5
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 15000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 15000
+    getBillingAccountNumber:
+      circuitBreaker:
+        requestVolumeThreshold: 5
+        errorThresholdPercentage: 90
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 15000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    getMsisdnStatus:
+      circuitBreaker:
+        requestVolumeThreshold: 5
+        errorThresholdPercentage: 90
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 15000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    getZoneForRowBundle:
+      circuitBreaker:
+        requestVolumeThreshold: 5
+        errorThresholdPercentage: 90
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 15000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+fez:
+  security:
+    enabled: true
+    permit-all: true
+    exclude-paths: /docs/**,/v2/api-docs,/swagger-resources/**,/configuration/security,/swagger-ui.html,/health,/prometheus
+    signature-verification: false
+    docker-secret: fez_jasypt_key
+  username: fez
+  password: ENC(ZYJN3LsD+bve5dxK30rEAyDnBP41ZaUuPn2Ntp09Ias=)
+  logging:
+    mask-headers: false
+    url-patterns:
+    - /customers/*
+    - /messages/*
+
+aggregate-usage:
+  national-endpoint: http://${tip-env.lower}.tip.corp.tele2.com:${tip-env.port}/rest/Customer/nationalBalance
+  restofworld-endpoint: http://${tip-env.lower}.tip.corp.tele2.com:${tip-env.port}/rest/Customer/rowBalance
+  username: ${tip-env.upper}_FEZ_NL
+  password: ${tip-env.upper}_FEZ_NL
+
+msisdns:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://customer-msisdns.${spring.profiles.active}.dle.nl.corp.tele2.com
+
+details:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://customer-details.${spring.profiles.active}.dle.nl.corp.tele2.com
+
+topups:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://customer-topups.${spring.profiles.active}.dle.nl.corp.tele2.com
+
+messaging:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://messaging-service.${spring.profiles.active}.dle.nl.corp.tele2.com
+
+---
+
+spring:
+  profiles:
+    local
+
+tip-env:
+  lower: sit
+  upper: SIT
+  port: 3405
+
+fez:
+  username: fez
+  password: ENC(rcX65juGsr4axg3OEg/7EzNOVFMsQE3eITewzwz2724=)
+  security:
+    docker-secret: false
+    passphrase: SuperSecret
+
+aggregate-usage:
+  national-endpoint: http://localhost:3405/rest/Customer/nationalBalance
+  restofworld-endpoint: http://localhost:3405/rest/Customer/rowBalance
+  username: LOCAL_FEZ_NL
+  password: LOCAL_FEZ_NL
+
+
+msisdns:
+  host: http://localhost:${wiremock.server.port:3405}
+#  host: http://customer-msisdns.int.dle.nl.corp.tele2.com
+
+details:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://localhost:${wiremock.server.port:3405}/details
+
+topups:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://localhost:${wiremock.server.port:3405}/topups
+
+messaging:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://localhost:${wiremock.server.port:3405}/messaging
+
+---
+
+spring:
+  profiles:
+    dev
+
+tip-env:
+  lower: sat
+  upper: SAT
+  port: 3405
+
+---
+
+spring:
+  profiles:
+    tst
+
+aggregate-usage:
+  national-endpoint: http://wiremock-tip-aggregate-usage.tst.dle.nl.corp.tele2.com/rest/Customer/nationalBalance
+  restofworld-endpoint: http://wiremock-tip-aggregate-usage.tst.dle.nl.corp.tele2.com/rest/Customer/rowBalance
+
+tip-env:
+  lower: tst
+  upper: TST
+  port: 3405
+
+msisdns:
+  host: http://wiremock-tip-aggregate-usage.tst.dle.nl.corp.tele2.com
+details:
+  host: http://wiremock-tip-aggregate-usage.tst.dle.nl.corp.tele2.com/details
+topups:
+  host: http://wiremock-tip-aggregate-usage.tst.dle.nl.corp.tele2.com
+messaging:
+  host: http://wiremock-tip-aggregate-usage.tst.dle.nl.corp.tele2.com/messaging
+
+---
+
+spring:
+  profiles:
+    int
+
+fez:
+  security:
+    provider:
+      wso2:
+        jwks: https://iui-wso2is11.itservices.lan/is-t/consumer.tele2.nl/oauth2/jwks
+
+tip-env:
+  lower: sit
+  upper: SIT
+  port: 3405
+
+---
+
+spring:
+  profiles:
+    uat
+
+fez:
+  security:
+    provider:
+      wso2:
+        jwks: https://sso.uat.tele2.nl/is-t/consumer.tele2.nl/oauth2/jwks
+
+tip-env:
+  lower: preprd
+  upper: PREPRD
+  port: 3605
+
+---
+
+spring:
+  profiles:
+    prf
+
+fez:
+  security:
+    provider:
+      wso2:
+        jwks: https://sso.uat.tele2.nl/is-t/consumer.tele2.nl/oauth2/jwks
+
+tip-env:
+  lower: perf
+  upper: PERF
+  port: 5505
+
+---
+
+spring:
+  profiles:
+    prd
+
+fez:
+  security:
+    signature-verification: true
+    provider:
+      wso2:
+        jwks: https://sso.tele2.nl/is-t/consumer.tele2.nl/oauth2/jwks
+  logging:
+    mask-headers: true
+
+tip-env:
+  lower: prd
+  upper: PRD
+  port: 5505
+
+aggregate-usage:
+  password: ENC(Wh5+/qZfv3IspRv4sCf4hZgR87mSDciD)
+
+msisdns:
+  host: http://customer-msisdns.ple.nl.corp.tele2.com
+
+details:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://customer-details.ple.nl.corp.tele2.com
+
+topups:
+  host: http://customer-topups.ple.nl.corp.tele2.com
+
+messaging:
+  #  host: http://localhost:${wiremock.server.port:3405}
+  host: http://messaging-service.ple.nl.corp.tele2.com

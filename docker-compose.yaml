@@ -1,0 +1,65 @@
+version: "3.4"
+
+services:
+  #SERVICE_NAME#:
+    image: "#REGISTRY_HOST#/#REPOSITORY_NAME#:#VERSION#"
+    environment:
+      - LOGSTASH_URL=#LOGSTASH_URL#
+      - APPDYNAMICS_CONTROLLER_HOST_NAME=#APPDYNAMICS_CONTROLLER_HOST_NAME#
+      - APPDYNAMICS_CONTROLLER_PORT=#APPDYNAMICS_CONTROLLER_PORT#
+      - APPDYNAMICS_CONTROLLER_SSL_ENABLED=#APPDYNAMICS_CONTROLLER_SSL_ENABLED#
+      - APPDYNAMICS_AGENT_APPLICATION_NAME=#APPDYNAMICS_AGENT_APPLICATION_NAME#
+      - APPDYNAMICS_AGENT_TIER_NAME=#APPDYNAMICS_AGENT_TIER_NAME#
+      - APPDYNAMICS_AGENT_BASE_DIR=#APPDYNAMICS_AGENT_BASE_DIR#
+      - APPDYNAMICS_AGENT_ACCOUNT_NAME=#APPDYNAMICS_AGENT_ACCOUNT_NAME#
+      - APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=#APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY#
+      - SPRING_PROFILES_ACTIVE=#SPRING_PROFILES_ACTIVE#
+      - DNS_SERVICE_NAME=#DNS_SERVICE_NAME#
+      - BUILD_NUMBER=#BUILD_NUMBER#
+    secrets:
+      - fez_jasypt_key
+    networks:
+      - ucp-hrm
+      - internal
+    labels:
+      - com.docker.ucp.access.label=#UCP_GROUP#
+    stop_grace_period: 30s
+    deploy:
+      mode: replicated
+      replicas: 2
+      placement:
+        preferences:
+          - spread: engine.labels.datacenter
+      update_config:
+        parallelism: 1
+        max_failure_ratio: 0
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+      labels:
+        - com.docker.ucp.mesh.http=external_route=http://#SERVICE_NAME#.#SWARM_HOST#,internal_port=8080
+        - com.docker.ucp.access.label=#UCP_GROUP#
+        - nl.tele2.domain=fez
+        - nl.tele2.filter.consumers=#CONSUMERS#
+        - nl.tele2.filter.team=#TEAM_NAME#
+        - nl.tele2.prometheus.endpoint=/prometheus
+        - nl.tele2.prometheus.port=8080
+        - nl.tele2.prometheus.network=#SERVICE_NAME#_#SPRING_PROFILES_ACTIVE#_internal
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 0.5G
+
+secrets:
+  fez_jasypt_key:
+    external: true
+networks:
+  internal:
+    driver: overlay
+    labels:
+    - com.docker.ucp.access.label=#UCP_GROUP#
+  ucp-hrm:
+    external: true

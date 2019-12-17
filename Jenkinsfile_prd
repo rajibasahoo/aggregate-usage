@@ -1,0 +1,17 @@
+@Library('jenkins-pipeline-library') _
+
+node {
+    releasePipeline {
+        serviceName = 'aggregate-usage'
+        scmProject = 'fez'
+        scmRepository = 'aggregate-usage'
+        network = 'lan'
+        releaseRole = 'Docker_Member_LAN_DTA_FEZ'
+        composeParams = [
+                SERVICE_NAME: serviceName,
+                REPOSITORY_NAME: 'development/fez-aggregate-usage',
+                TEAM_NAME: 'Elon',
+                CONSUMERS: 'newapp, new mt2Web'
+        ]
+    }
+}

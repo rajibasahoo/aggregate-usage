@@ -1,0 +1,35 @@
+== Circuit Breaking
+
+In the service we also implemented circuit breaking functionality from Hystrix. FEZ Microservices - Netflix's Hystrix
+
+The method that retrieves the Aggregate Usage from TIP is wrapped in a Hystrix command. A fallback method is implemented and it provides some extra logging which enables us to see if the circuit breaker is open. The circuit breaker will trip when there are 5 faulty requests (404 excluded) in a rolling time frame of 15 seconds.
+
+In the spring boot health endpoint there's some additional information added about the status of the circuitbreaker. See the example below:
+
+[source, json]
+----
+{
+  "status": "UNSTABLE",
+ "cache": {
+    "status": "UP",
+ "nrOfMembers": 1,
+ "memberIps": [
+      "/10.206.68.38"
+ ]
+  },
+ "circuitBreaker": {
+    "status": "UNSTABLE"
+ },
+ "refreshScope": {
+    "status": "UP"
+ },
+ "hystrix": {
+    "status": "CIRCUIT_OPEN",
+ "openCircuitBreakers": [
+      "AggregateUsage::getAggregateUsage"
+ ]
+  }
+}
+----
+
+

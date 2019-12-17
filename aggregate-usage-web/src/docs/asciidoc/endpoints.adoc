@@ -1,0 +1,30 @@
+
+== Tech and swagger endpoints
+
+The service uses the following technologies:
+
+- Spring boot
+- Hystrix circuit breaking
+
+[cols="1,6", options="header"]
+|===
+|Environment | Swagger Endpoint
+|DEV       | http://aggregate-usage.dev.dle.nl.corp.tele2.com/swagger-ui.html
+|TST       | http://aggregate-usage.tst.dle.nl.corp.tele2.com/swagger-ui.html
+|INT       | http://aggregate-usage.int.dle.nl.corp.tele2.com/swagger-ui.html
+|UAT       | http://aggregate-usage.uat.dle.nl.corp.tele2.com/swagger-ui.html
+|PRF       | http://aggregate-usage.prf.dle.nl.corp.tele2.com/swagger-ui.html
+|PRD       | http://aggregate-usage.ple.nl.corp.tele2.com/swagger-ui.html
+|===
+
+== Health Endpoints
+[cols="1,6", options="header"]
+|===
+|Environment | Url
+|DEV       | http://aggregate-usage.dev.dle.nl.corp.tele2.com/health
+|TST       | http://aggregate-usage.tst.dle.nl.corp.tele2.com/health
+|INT       | http://aggregate-usage.int.dle.nl.corp.tele2.com/health
+|UAT       | http://aggregate-usage.uat.dle.nl.corp.tele2.com/health
+|PRF       | http://aggregate-usage.prf.dle.nl.corp.tele2.com/health
+|PRD       | http://aggregate-usage.ple.nl.corp.tele2.com/health
+|===

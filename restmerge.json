@@ -1,0 +1,27 @@
+{
+    "title": "Jenkins pull request #BRANCH#",
+    "description": "Automated pull request",
+    "state": "OPEN",
+    "open": true,
+    "closed": false,
+    "fromRef": {
+        "id": "refs/heads/#BRANCH#",
+        "repository": {
+            "slug": "#REPOS#",
+            "name": null,
+            "project": {
+                "key": "#KEY#"
+            }
+        }
+    },
+    "toRef": {
+        "id": "refs/heads/#DESTBRANCH#",
+        "repository": {
+            "slug": "#REPOS#",
+            "name": null,
+            "project": {
+                "key": "#KEY#"
+            }
+        }
+    }
+}
